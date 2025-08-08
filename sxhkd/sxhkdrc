@@ -1,0 +1,62 @@
+# ========== Основные ==========
+# Терминал (Super+Enter)
+super + Return
+    kitty
+
+# Меню приложений (Super+d)
+super + d
+    rofi -show drun
+
+# Закрыть окно (Super+q)
+super + q
+    bspc node -k
+
+# ========== Рабочие столы ==========
+# Переключение (Super+1-9)
+super + {_,shift + }{1-9}
+    bspc {desktop -f,node -d} '^{1-9}' --follow
+
+# ========== Навигация ==========
+# Фокус окон (Super+HJKL)
+super + h
+    bspc node -s west
+super + j
+    bspc node -s south
+super + k
+    bspc node -s north
+super + l
+    bspc node -s east
+
+# Перемещение окон (Super+Shift+HJKL)
+super + shift + {h,j,k,l}
+    bspc node -v {-20 0, 0 20, 0 -20, 20 0}
+
+# ========== Режимы ==========
+# Полный экран (Super+f)
+super + f
+    bspc node -t fullscreen
+
+# Плавающий режим (Super+Shift+Space)
+super + shift + space
+    bspc node -t floating
+
+# ========== Разделение ==========
+# Вертикальное (Super+v)
+super + v
+    bspc node -p east
+
+# Горизонтальное (Super+h)
+super + h
+    bspc node -p south
+
+# Изменить соотношение (Super+Ctrl+HJKL)
+super + ctrl + {Left,Down,Up,Right}
+    bspc node -z {left -20 0, bottom 0 20, top 0 -20, right 20 0}
+
+# ========== Прочее ==========
+# Перезагрузка bspwm (Super+Shift+r)
+super + shift + r
+    pkill -USR1 -x sxhkd; bspc wm -r
+# Move window by direction in same workspace
+super + {_,shift + }{Left,Down,Up,Right}
+	bspc node --{focus,swap} {west,south,north,east}
